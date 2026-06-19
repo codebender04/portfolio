@@ -435,7 +435,6 @@ body:has(button:hover) .cursor-ring {
     color: #c4b5fd;
     border-radius: 40px;
 }
-
 /* ── Art ── */
 .art-showcase {
     display: grid;
@@ -465,8 +464,43 @@ body:has(button:hover) .cursor-ring {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
+
 @media (max-width: 900px) { .art-showcase { grid-template-columns: 1fr; } }
 
+/* ── Buzzle asset gallery ── */
+.buzzle-full {
+    grid-column: 1 / -1;
+}
+.buzzle-title-showcase {
+    margin: 24px auto;
+    max-width: 420px;   /* controls title image size */
+    text-align: center;
+}
+
+.buzzle-title-showcase img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.buzzle-sheet {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(10,10,15,0.4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.buzzle-sheet img {
+    width: min(800px, 100%);
+    height: auto;
+    display: block;
+    image-rendering: pixelated;
+}
 /* ── Audio ── */
 .audio-list { max-width: 780px; display: flex; flex-direction: column; gap: 16px; }
 .audio-card {
