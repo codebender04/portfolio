@@ -27,6 +27,7 @@ body {
     color: var(--text);
     line-height: 1.65;
     overflow-x: hidden;
+    cursor: none;
 }
 
 /* ── Custom cursor ── */
