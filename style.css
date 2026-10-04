@@ -382,6 +382,21 @@ body:has(button:hover) .cursor-ring {
     letter-spacing: -0.01em;
     z-index: 1;
 }
+/* Mobile projects */
+
+.proj-card.mobile-project .proj-thumb {
+    aspect-ratio: 3 / 4;
+}
+
+.proj-card.mobile-project .proj-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.proj-card.mobile-start {
+    grid-column: 1;
+}
 .hover-overlay {
     position: absolute;
     inset: 0;
