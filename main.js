@@ -179,21 +179,38 @@ function fitSprite() {
 fitSprite();
 window.addEventListener('resize', fitSprite);
 
+// {n} is replaced with the click count
 const LINES = [
-    "Hi! I'm Khoa, but in 32×32 pixels.",
-    'The games are below. They are good. Trust me.',
+    "Hi! I'm Khoa's avatar. The real one is busy fixing a bug.",
+    "Psst. Keep clicking. I've heard there's a reward if you click enough.",
+    'The games are below. They are good, I promise.',
     'Yes, I drew myself. Yes, I made myself better looking.',
     'Stop poking me. I have i-frames.',
-    'Hire me. I want a hat.',
+    "That's {n} clicks. Is this a clicker game now?",
     'Try the Konami code. I dare you.',
-    'Every pixel of me was placed by hand. All 1,024 of them.',
-    'OK that one tickled.',
+    'Hire me. I want a hat.',
+    'Fun fact: I really like incremental games. Clicking me counts.',
+    '{n} clicks and still no achievement. Keep going.',
+    "I'm out of lines. Looping back. Like a roguelike.",
 ];
+const MILESTONES = {
+    25: 'ACHIEVEMENT UNLOCKED: Poked 25 times. Reward: this sentence.',
+    50: '50 clicks. You know the projects are the actual content, right?',
+    100: "100 clicks. OK, you win. I'm telling Khoa.",
+};
 const speech = document.getElementById('speech');
 let lineIndex = 0;
+let pokes = 0;
 document.getElementById('spriteBtn').addEventListener('click', e => {
-    speech.textContent = LINES[lineIndex];
-    lineIndex = (lineIndex + 1) % LINES.length;
+    pokes++;
+    if (MILESTONES[pokes]) {
+        speech.textContent = MILESTONES[pokes];
+        SFX.play('levelup');
+        showToast(`Achievement: ${pokes} pokes`);
+    } else {
+        speech.textContent = LINES[lineIndex].replace('{n}', pokes);
+        lineIndex = (lineIndex + 1) % LINES.length;
+    }
     [sprite, speech].forEach(el => {
         el.classList.remove(el === sprite ? 'poke' : 'pop');
         void el.offsetWidth;

@@ -170,6 +170,30 @@ a, button { color: inherit; }
     background: linear-gradient(transparent 55%, var(--yellow) 55%);
     font-weight: 500;
 }
+/* "bug" gets scratched out and corrected to "feature" a moment after the intro appears */
+.scratch { position: relative; text-decoration: none; color: var(--ink-soft); }
+.scratch::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    top: 52%;
+    height: 3px;
+    background: var(--red);
+    transform: rotate(-8deg) scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease-out) 1.1s;
+}
+.fixed {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--red);
+    transform: rotate(-4deg) scale(0);
+    transition: transform 0.45s var(--spring) 1.45s;
+}
+.hero-desc.visible .scratch::after, html:not(.js) .scratch::after { transform: rotate(-8deg) scaleX(1); }
+.hero-desc.visible .fixed, html:not(.js) .fixed { transform: rotate(-4deg); }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
 
 /* character sheet */
